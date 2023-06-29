@@ -76,7 +76,7 @@ CREATE TABLE "rel_docente_aluno_disciplina"(
 	cpf_docente VARCHAR(14) NOT NULL,
 	cpf_aluno VARCHAR(14) NOT NULL,
 	codigo_disciplina VARCHAR(10) NOT NULL,
-	notas DOUBLE NOT NULL,
+	nota DOUBLE NOT NULL,
 	data_inicio DATE NOT NULL,
 	data_fim DATE NOT NULL,
 	PRIMARY KEY cpf_docente,
