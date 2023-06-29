@@ -13,12 +13,11 @@ CREATE TABLE "pessoa"(
 CREATE TABLE "perfil"(
 	codigo_perfil SERIAL,
 	tipo_perfil VARCHAR(20),
-	código_serviço VARCHAR(20),
 	PRIMARY KEY (codigo_perfil)
 );
 
 CREATE TABLE "servico"(
-	codigo_servico SERIAL,
+	codigo_servico SERIAL,	
 	descricao VARCHAR(1000) NOT NULL,
 	tipo_servico VARCHAR(50) NOT NULL,
 	codigo_perfil INT NOT NULL,
@@ -74,7 +73,7 @@ CREATE TABLE "rel_docente_aluno_disciplina"(
 	cpf_docente VARCHAR(14) NOT NULL,
 	cpf_aluno VARCHAR(14) NOT NULL,
 	codigo_disciplina VARCHAR(10) NOT NULL,
-	nota DOUBLE NOT NULL,
+	nota obtida DECIMAL(4, 2) NOT NULL,
 	data_inicio DATE NOT NULL,
 	data_fim DATE NOT NULL,
 	PRIMARY KEY cpf_docente,
@@ -91,3 +90,4 @@ CREATE TABLE "rel_docente_aluno_disciplina"(
 			REFERENCES disciplina(codigo_disciplina)
 );
 
+	
