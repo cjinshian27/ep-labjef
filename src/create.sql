@@ -1,5 +1,3 @@
-select convert(varchar(max), DateColumn,  13), 
-       format(DateColumn, 'dd-MMM-yyyy');
 
 CREATE TABLE "pessoa"(
 	cpf CHAR(14) NOT NULL,  /*example: 123.456.789-00*/
