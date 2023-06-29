@@ -20,9 +20,9 @@
 
 % RELATIONS
 
-\node (pessoatitulo) {\textbf{PESSOA}};
+\node (pessoa-titulo) {\textbf{PESSOA}};
 
-\node [relation=7, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of pessoatitulo.west, anchor=west] (pessoa)
+\node [relation=7, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of pessoa-titulo.west, anchor=west] (pessoa)
 {\underline{CPF}%
 \nodepart{two}   Nome
 \nodepart{three} Endereço
@@ -32,66 +32,66 @@
 \nodepart{seven} Data nascimento
 };
 
-\node [below=1cm of pessoa.west, anchor=west] (perfiltitulo) {\textbf{PERFIL}};
+\node [below=1cm of pessoa.west, anchor=west] (perfil-titulo) {\textbf{PERFIL}};
 
-\node [relation=3, rectangle split horizontal, rectangle split part fill={lightgray!50}, below=0.6cm of perfiltitulo.west, anchor=west] (perfil)
+\node [relation=3, rectangle split horizontal, rectangle split part fill={lightgray!50}, below=0.6cm of perfil-titulo.west, anchor=west] (perfil)
 {\underline{Código perfil}%
 \nodepart{two} Tipo perfil
 \nodepart{three} Código serviço
 };
 
-\node [below=1cm of perfil.west, anchor=west] (serviçotítulo) {\textbf{SERVIÇO}};
+\node [below=1cm of perfil.west, anchor=west] (servico-titulo) {\textbf{SERVIÇO}};
 
-\node [relation=4, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of serviçotítulo.west, anchor=west] (serviço)
+\node [relation=4, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of servico-titulo.west, anchor=west] (servico)
 {\underline{Código serviço}%
 \nodepart{two}   Descrição
 \nodepart{three} Tipo serviço
 \nodepart{four} Código perfil
 };
 
-\node [below=1cm of serviço.west, anchor=west] (docentetítulo) {\textbf{DOCENTE}};
+\node [below=1cm of servico.west, anchor=west] (docente-titulo) {\textbf{DOCENTE}};
 
-\node [relation=3, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of docentetítulo.west, anchor=west] (docente)
+\node [relation=3, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of docente-titulo.west, anchor=west] (docente)
 {\underline{CPF docente}%
 \nodepart{two}   Especialidade
 \nodepart{three} Função técnica
 };
 
-\node [below=1cm of docente.west, anchor=west] (funcionáriotítulo) {\textbf{FUNCIONÁRIO}};
+\node [below=1cm of docente.west, anchor=west] (funcionario-titulo) {\textbf{FUNCIONÁRIO}};
 
-\node [relation=3, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of funcionáriotítulo.west, anchor=west] (funcionário)
+\node [relation=3, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of funcionario-titulo.west, anchor=west] (funcionario)
 {\underline{CPF funcionário}%
 \nodepart{two}   Especialidade
 \nodepart{three} Função técnica
 };
 
-\node [below=1cm of funcionário.west, anchor=west] (alunotítulo) {\textbf{ALUNO}};
+\node [below=1cm of funcionario.west, anchor=west] (aluno-titulo) {\textbf{ALUNO}};
 
-\node [relation=3, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of alunotítulo.west, anchor=west] (aluno)
+\node [relation=3, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of aluno-titulo.west, anchor=west] (aluno)
 {\underline{CPF aluno}%
 \nodepart{two}   Curso
 \nodepart{three} Nota ingresso
 };
 
-\node [below=1cm of aluno.west, anchor=west] (disciplinatítulo) {\textbf{DISCIPLINA}};
+\node [below=1cm of aluno.west, anchor=west] (disciplina-titulo) {\textbf{DISCIPLINA}};
 
-\node [relation=4, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of disciplinatítulo.west, anchor=west] (disciplina)
+\node [relation=4, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of disciplina-titulo.west, anchor=west] (disciplina)
 {\underline{Código disciplina}%
 \nodepart{two}   Nome
 \nodepart{three} Ementa
 \nodepart{four} Data criação
 };
 
-\node [below=1cm of disciplina.west, anchor=west] (relaçãopessoaperfiltítulo) {\textbf{REL\_PESSOA\_PERFIL}};
+\node [below=1cm of disciplina.west, anchor=west] (relacao-pessoa-perfil-titulo) {\textbf{REL\_PESSOA\_PERFIL}};
 
-\node [relation=2, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of relaçãopessoaperfiltítulo.west, anchor=west] (relaçãopessoaperfil)
+\node [relation=2, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of relacao-pessoa-perfil-titulo.west, anchor=west] (relacao-pessoa-perfil)
 {\underline{CPF pessoa}%
  \nodepart{two} \underline{Código perfil}%
 };
 
-\node [below=1cm of relaçãopessoaperfil.west, anchor=west] (relaçãodocentealunodisciplinatítulo) {\textbf{REL\_DOCENTE\_ALUNO\_DISCIPLINA}};
+\node [below=1cm of relacao-pessoa-perfil.west, anchor=west] (relacao-docente-aluno-disciplina-titulo) {\textbf{REL\_DOCENTE\_ALUNO\_DISCIPLINA}};
 
-\node [relation=6, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of relaçãodocentealunodisciplinatítulo.west, anchor=west] (relaçãopessoaperfil)
+\node [relation=6, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of relacao-docente-aluno-disciplina-titulo.west, anchor=west] (relacao-pessoa-perfil)
 {\underline{CPF docente}%
  \nodepart{two} \underline{CPF aluno}
  \nodepart{three} \underline{Código disciplina}%
