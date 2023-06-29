@@ -27,7 +27,7 @@
 \nodepart{four} Senha 
 \nodepart{five} Login
 \nodepart{six} Instituição
-\nodepart{seven} Data de nascimento
+\nodepart{seven} Data nascimento
 };
 
 \node [below=1cm of pessoa.west, anchor=west] (perfiltitulo) {\textbf{PERFIL}};
@@ -67,8 +67,8 @@
 
 \node [relation=3, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of alunotítulo.west, anchor=west] (aluno)
 {\underline{CPF aluno}%
-\nodepart{two}   Cursos
-\nodepart{three} Notas ingresso
+\nodepart{two}   Curso
+\nodepart{three} Nota ingresso
 };
 
 \node [below=1cm of aluno.west, anchor=west] (disciplinatítulo) {\textbf{DISCIPLINA}};
@@ -92,9 +92,9 @@
 \node [relation=6, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of relaçãodocentealunodisciplinatítulo.west, anchor=west] (relaçãopessoaperfil)
 {\underline{CPF docente}%
  \nodepart{two} \underline{CPF aluno}
- \nodepart{three} \underline{Código perfil}%
+ \nodepart{three} \underline{Código disciplina}%
  \nodepart{four} 
-Notas obtidas
+Nota obtida
 \nodepart{five} 
  Data início
 \nodepart{six} 

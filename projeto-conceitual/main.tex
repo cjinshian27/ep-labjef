@@ -29,13 +29,13 @@ draw, black, thick, minimum size=3em]
 
   \node[entity] (pessoa) {Pessoa};
   
-  \node[attribute] (data de nascimento) [above = 2.3cm of pessoa] {Data de nascimento} edge (pessoa);
+  \node[attribute] (data nascimento) [above = 2.3cm of pessoa] {Data nascimento} edge (pessoa);
   
-  \node[attribute] (nome) [left = 1cm of data de nascimento] {Nome} edge (pessoa);
+  \node[attribute] (nome) [left = 1cm of data nascimento] {Nome} edge (pessoa);
   
-  \node[attribute] (cpf) [right = 1cm of data de nascimento] {\underline{CPF}} edge (pessoa);
+  \node[attribute] (cpf) [right = 1cm of data nascimento] {\underline{CPF}} edge (pessoa);
   
-  \node[attribute] (endereço) [below left = 2cm of data de nascimento] {Endereço} edge (pessoa);
+  \node[attribute] (endereço) [below left = 2cm of data nascimento] {Endereço} edge (pessoa);
   
   \node[attribute] (instituição) [below left = 2cm of pessoa] {Instituição} edge (pessoa);
   
@@ -103,9 +103,9 @@ draw, black, thick, minimum size=3em]
   
   \node[attribute] (funcionário-função técnica) [left = 0.8cm of rel2] {Função técnica} edge (funcionário);
 
-  \node[attribute] (cursos) [right = 1cm of aluno] {Cursos} edge (aluno);  
+  \node[attribute] (curso) [right = 1cm of aluno] {Curso} edge (aluno);  
   
-  \node[attribute] (notas de ingresso) [below right = 1cm of aluno] {Notas ingresso} edge (aluno);  
+  \node[attribute] (nota ingresso) [below right = 1cm of aluno] {Nota ingresso} edge (aluno);  
   
   \node[attribute] (nome disciplina) [left = 2cm of disciplina] {Nome} edge (disciplina);
 
@@ -117,9 +117,9 @@ draw, black, thick, minimum size=3em]
   \node[attribute] (data criação) [above left = 0.8cm of disciplina] {Data criação} edge (disciplina);
 
   \node[relationship] (rel3) [below right = 3.5cm of docente] {} edge (docente) edge (disciplina) edge (aluno); 
-  \node[attribute] (notas obtidas) [right = 0.5cm of código disciplina] {Notas obtidas} edge (rel3); 
+  \node[attribute] (nota obtida) [right = 0.5cm of código disciplina] {Nota obtida} edge (rel3); 
   
-  \node[attribute] (data início) [right = 0.5cm of notas obtidas] {Data início} edge (rel3); 
+  \node[attribute] (data início) [right = 0.5cm of nota obtida] {Data início} edge (rel3); 
   
   \node[attribute] (data fim) [right = 0.5cm of data início] {Data fim} edge (rel3); 
   
