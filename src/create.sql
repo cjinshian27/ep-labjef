@@ -16,7 +16,7 @@ CREATE TABLE "perfil"(
 	id SERIAL,
 	codigo VARCHAR(10) NOT NULL,
 	tipo VARCHAR(20),
-	PRIMARY KEY (codigo_perfil),
+	PRIMARY KEY (id),
 	UNIQUE (codigo)
 );
 
