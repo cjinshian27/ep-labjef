@@ -73,8 +73,8 @@ CREATE TABLE "disciplina"(
 CREATE TABLE "rel_pessoa_perfil"(
 	id_pessoa INT NOT NULL,
 	id_perfil INT NOT NULL,
-	PRIMARY KEY (cpf_pessoa),
-	PRIMARY KEY (codigo_perfil),
+	PRIMARY KEY (id_pessoa),
+	PRIMARY KEY (id_perfil),
 	CONSTRAINT fk_pessoa
 		FOREIGN KEY id_pessoa
 			REFERENCES pessoa(id),
