@@ -26,7 +26,7 @@ CREATE TABLE "servico"(
 	descricao VARCHAR(1000) NOT NULL,
 	tipo VARCHAR(50) NOT NULL,
 	id_perfil INT NOT NULL,
-	PRIMARY KEY (codigo_servico),
+	PRIMARY KEY (id),
 	UNIQUE (codigo),
 	CONSTRAINT fk_perfil 
 		FOREIGN KEY (id) 
