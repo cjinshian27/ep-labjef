@@ -103,3 +103,18 @@ CREATE TABLE "rel_oferecimento"(
 		FOREIGN KEY (id_disciplina)
 			REFERENCES disciplina(id)
 );
+
+CREATE TABLE "rel_historico"(
+	id SERIAL,
+	id_pessoa INT NOT NULL,
+	id_servico INT NOT NULL,
+	timestamp TIMESTAMP default CURRENT_TIMESTAMP,
+	PRIMARY KEY (id),
+	UNIQUE (id_pessoa, id_servico, timestamp),
+	CONSTRAINT fk_pessoa
+		FOREIGN KEY (id_pessoa)
+			REFERENCES pessoa(id),
+	CONSTRAINT fk_servico
+		FOREIGN KEY (id_servico)
+			REFERENCES servico(id)
+);
