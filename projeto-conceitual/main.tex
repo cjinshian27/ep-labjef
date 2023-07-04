@@ -10,6 +10,7 @@
 
 \tikzstyle{isa} = [isosceles triangle, isosceles triangle apex angle=70, shape border rotate=270,
 draw, black, thick, minimum size=3em]
+\tikzstyle {total} = [double distance = 2 pt]
 
 \usetikzlibrary{er,positioning}
 
@@ -23,15 +24,15 @@ draw, black, thick, minimum size=3em]
 
   \node[entity] (pessoa) {Pessoa};
 
-  \node[relationship] (rel-pessoa-perfil) [right = 2cm of pessoa] {} edge (pessoa);
+  \node[relationship] (rel-pessoa-perfil) [right = 2cm of pessoa] {};
 
-  \node[entity] (perfil) [right = 2cm of rel-pessoa-perfil] {Perfil} edge (rel-pessoa-perfil);
+  \node[entity] (perfil) [right = 2cm of rel-pessoa-perfil] {Perfil};
 
-  \node[relationship] (rel-perfil-servico) [right = 2cm of perfil] {} edge (perfil);
+  \node[relationship] (rel-perfil-servico) [right = 2cm of perfil] {};
 
-  \node[entity] (servico) [right = 2cm of rel-perfil-servico] {Serviço} edge (rel-perfil-servico);
+  \node[entity] (servico) [right = 2cm of rel-perfil-servico] {Serviço};
 
-  \node[isa] (especializacao) [below right = 2 and 2 cm of pessoa] {} edge (pessoa);
+  \node[isa] (especializacao) [below right = 4cm of pessoa] {Especializada em} edge (pessoa);
 
   \node[entity] (funcionario) [below left = 5mm and 2cm of especializacao] {Funcionário} edge (especializacao);
 
@@ -39,11 +40,11 @@ draw, black, thick, minimum size=3em]
 
   \node[entity] (docente) [below right = 5mm and 2cm of especializacao] {Docente} edge (especializacao);
 
-  \node[relationship] (rel-oferecimento) [right = 2cm of aluno] {} edge (docente) edge (aluno);
+  \node[relationship] (rel-oferecimento) [right = 2cm of aluno] {Oferecimento};
 
-  \node[entity] (disciplina) [right = 2cm of rel-oferecimento] {Disciplina} edge (rel-oferecimento);
+  \node[entity] (disciplina) [right = 2cm of rel-oferecimento] {Disciplina};
 
-  \node[relationship] (rel-historico) [above = 15mm of perfil] {} edge (pessoa) edge (servico);
+  \node[relationship] (rel-historico) [above = 15mm of perfil] {Histórico};
   
 % ---------------------
 %    CARDINALIDADES
@@ -57,12 +58,12 @@ draw, black, thick, minimum size=3em]
   \path (rel-pessoa-perfil) edge node [above] {$m$} (perfil);
 
   \path (rel-perfil-servico) edge node [above] {$1$} (perfil);
-  \path (rel-perfil-servico) edge node [above] {$m$} (servico);
+  \path (rel-perfil-servico) edge [total]  node [above] {$m$} (servico);
 
   \path (rel-historico) edge node [above] {$n$} (pessoa);
   \path (rel-historico) edge node [above] {$m$} (servico);
    
-  % \path (especializacao) edge node [above right] {\{Parcial\}} (pessoa);
+  \path (especializacao) edge node [below right = 7mm and 14mm] {\{Sobreponível, Parcial\}} (pessoa);
 
 % ---------------------
 %        PESSOA
