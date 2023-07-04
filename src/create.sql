@@ -37,7 +37,7 @@ CREATE TABLE "docente"(
 	id SERIAL,
 	cpf_docente CHAR(14) NOT NULL,
 	especialidade VARCHAR(150) NOT NULL,
-	função_tecnica VARCHAR(150),
+	funcao_tecnica VARCHAR(150),
 	PRIMARY KEY (id),
 	UNIQUE (cpf_docente)
 );
@@ -46,7 +46,7 @@ CREATE TABLE "funcionario"(
 	id SERIAL,
 	cpf_funcionario CHAR(14) NOT NULL,
 	especialidade VARCHAR(150) NOT NULL,
-	função_tecnica VARCHAR(150),
+	funcao_tecnica VARCHAR(150),
 	PRIMARY KEY (id),
 	UNIQUE (cpf_funcionario)
 );
