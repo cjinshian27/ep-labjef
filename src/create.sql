@@ -83,7 +83,7 @@ CREATE TABLE "rel_pessoa_perfil"(
 			REFERENCES perfil(id)
 );
 
-CREATE TABLE "rel_docente_aluno_disciplina"(
+CREATE TABLE "rel_oferecimento"(
 	id SERIAL,
 	id_docente INT NOT NULL,
 	id_aluno INT NOT NULL,

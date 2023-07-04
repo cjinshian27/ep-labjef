@@ -110,7 +110,7 @@ VALUES
 (14, 14);
 
 
-INSERT INTO "rel_docente_aluno_disciplina"(id_docente, id_aluno, id_disciplina, nota_obtida, data_inicio, data_fim)
+INSERT INTO "rel_oferecimento"(id_docente, id_aluno, id_disciplina, nota_obtida, data_inicio, data_fim)
 VALUES
 (1, 4, 3, 8.80, '2020-08-07', '2020-12-07'),
 (1, 3, 3, 8.50, '2020-08-07', '2020-12-07'),
