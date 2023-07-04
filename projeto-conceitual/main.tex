@@ -42,6 +42,8 @@ draw, black, thick, minimum size=3em]
   \node[relationship] (rel-oferecimento) [right = 2cm of aluno] {} edge (docente) edge (aluno);
 
   \node[entity] (disciplina) [right = 2cm of rel-oferecimento] {Disciplina} edge (rel-oferecimento);
+
+  \node[relationship] (rel-historico) [above = 15mm of perfil] {} edge (pessoa) edge (servico);
   
 % ---------------------
 %    CARDINALIDADES
@@ -56,6 +58,9 @@ draw, black, thick, minimum size=3em]
 
   \path (rel-perfil-servico) edge node [above] {$1$} (perfil);
   \path (rel-perfil-servico) edge node [above] {$m$} (servico);
+
+  \path (rel-historico) edge node [above] {$n$} (pessoa);
+  \path (rel-historico) edge node [above] {$m$} (servico);
    
   % \path (especializacao) edge node [above right] {\{Parcial\}} (pessoa);
 
@@ -130,6 +135,12 @@ draw, black, thick, minimum size=3em]
   \node[attribute] (nota-obtida) [below left = 1cm of rel-oferecimento] {Nota obtida} edge (rel-oferecimento);
   \node[attribute] (data-inicio) [below = 1.5cm of rel-oferecimento] {Data início} edge (rel-oferecimento);
   \node[attribute] (data-fim) [below right = 1cm of rel-oferecimento] {Data fim} edge (rel-oferecimento);
+
+% ---------------------
+%      HISTORICO
+% ---------------------
+
+  \node[attribute] (data) [below = 5mm of rel-historico] {Data fim} edge (rel-historico);
   
 \end{tikzpicture}
     
