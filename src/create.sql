@@ -73,8 +73,7 @@ CREATE TABLE "disciplina"(
 CREATE TABLE "rel_pessoa_perfil"(
 	id_pessoa INT NOT NULL,
 	id_perfil INT NOT NULL,
-	PRIMARY KEY (id_pessoa),
-	PRIMARY KEY (id_perfil),
+	PRIMARY KEY (id_pessoa, id_perfil),
 	CONSTRAINT fk_pessoa
 		FOREIGN KEY (id_pessoa)
 			REFERENCES pessoa(id),
@@ -90,9 +89,7 @@ CREATE TABLE "rel_docente_aluno_disciplina"(
 	nota_obtida DECIMAL(4, 2) NOT NULL,
 	data_inicio DATE NOT NULL,
 	data_fim DATE NOT NULL,
-	PRIMARY KEY id_docente,
-	PRIMARY KEY id_aluno,
-	PRIMARY KEY id_disciplina,
+	PRIMARY KEY (id_docente, id_aluno, id_disciplina),
 	CONSTRAINT fk_docente
 		FOREIGN KEY (id_docente)
 			REFERENCES docente(id),
