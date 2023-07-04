@@ -76,10 +76,10 @@ CREATE TABLE "rel_pessoa_perfil"(
 	PRIMARY KEY (id_pessoa),
 	PRIMARY KEY (id_perfil),
 	CONSTRAINT fk_pessoa
-		FOREIGN KEY id_pessoa
+		FOREIGN KEY (id_pessoa)
 			REFERENCES pessoa(id),
 	CONSTRAINT fk_perfil
-		FOREIGN KEY id_perfil
+		FOREIGN KEY (id_perfil)
 			REFERENCES perfil(id) 
 );
 
@@ -94,13 +94,13 @@ CREATE TABLE "rel_docente_aluno_disciplina"(
 	PRIMARY KEY id_aluno,
 	PRIMARY KEY id_disciplina,
 	CONSTRAINT fk_docente
-		FOREIGN KEY id_docente
+		FOREIGN KEY (id_docente)
 			REFERENCES docente(id),
 	CONSTRAINT fk_aluno
-		FOREIGN KEY id_aluno
+		FOREIGN KEY (id_aluno)
 			REFERENCES aluno(id),
 	CONSTRAINT fk_disciplina
-		FOREIGN KEY id_disciplina
+		FOREIGN KEY (id_disciplina)
 			REFERENCES disciplina(id)
 );
 
