@@ -43,15 +43,20 @@ $ sudo service postgresql restart
 
 ```shell
 $ sudo -u postgres psql
-
 postgres=# CREATE USER testeusr WITH ENCRYPTED PASSWORD 'testeusr';
 postgres=# CREATE DATABASE teste WITH OWNER testeusr;
-postgres=# \c teste;
 ```
 
 ## Scripts
 
-**Note** Substitua path_to com o caminho dos arquivos correspondentes.
+Acessar banco de dados "teste" como usuário "testeusr"
+
+```shell
+$ psql -U testeusr teste
+```
+
+> **Note**
+> Substitua path_to com o caminho dos arquivos correspondentes.
 
 Criar tabelas.
 
@@ -79,10 +84,8 @@ teste=# \i path_to/drop.sql
 
 ## Desfazer ambiente
 
-
 ```shell
-teste=# \c postgres
-
+$ sudo -u postgres psql
 postgres=# DROP DATABASE IF EXISTS teste;
 postgres=# DROP USER IF EXISTS testeusr;
 ```
