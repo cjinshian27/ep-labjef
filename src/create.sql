@@ -29,7 +29,7 @@ CREATE TABLE "servico"(
 	PRIMARY KEY (id),
 	UNIQUE (codigo),
 	CONSTRAINT fk_perfil 
-		FOREIGN KEY (id) 
+		FOREIGN KEY (id_perfil)
 			REFERENCES perfil(id)  
 );
 
