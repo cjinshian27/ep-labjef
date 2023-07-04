@@ -1,6 +1,6 @@
 % arara: pdflatex
 
-\documentclass[border=1in]{standalone}
+\documentclass[border=1cm]{standalone}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage[portuguese]
@@ -37,9 +37,9 @@ draw, black, thick, minimum size=3em]
   
   \node[attribute] (senha) [below = 1.2cm of cpf] {Senha} edge (pessoa);
 
-  \node[relationship] (rel1) [right = 4cm of pessoa] {} edge (pessoa) ;
+  \node[relationship] (rel-pessoa-perfil) [right = 4cm of pessoa] {} edge (pessoa) ;
   
-  \node[entity] (perfil) [right = 4cm of rel1] {Perfil} edge (rel1);
+  \node[entity] (perfil) [right = 4cm of rel-pessoa-perfil] {Perfil} edge (rel-pessoa-perfil);
 
   \node[attribute] (codigo-perfil) [above = 1cm of perfil] {Código perfil} edge (perfil);
 
@@ -53,9 +53,9 @@ draw, black, thick, minimum size=3em]
 
  % \node[attribute] (administrativo) [above = 2cm of tipo-perfil] {Administrativo} edge (tipo-perfil);
 
-  \node[relationship] (rel2) [below right = 2cm of perfil] {} edge (perfil) ;
+  \node[relationship] (rel-perfil-servico) [below right = 2cm of perfil] {} edge (perfil) ;
 
-  \node[entity] (servico) [below = 2cm of rel2] {Serviço} edge (rel2);
+  \node[entity] (servico) [below = 2cm of rel-perfil-servico] {Serviço} edge (rel-perfil-servico);
 
   \node[attribute] (codigo-servico) [above right = 2cm of servico] {Código serviço} edge (servico);
   
@@ -73,12 +73,12 @@ draw, black, thick, minimum size=3em]
 
 %  \node[attribute] (remocao) [below = 1.5cm of servico-tipo] {Remoção} edge (servico-tipo);
   
-  \path (rel1) edge node [above] {$n$} (pessoa);
-  \path (rel1) edge node [above] {$m$}(perfil);
+  \path (rel-pessoa-perfil) edge node [above] {$n$} (pessoa);
+  \path (rel-pessoa-perfil) edge node [above] {$m$}(perfil);
 
-  \path (rel2) edge node [above right] {$1$} (perfil);
+  \path (rel-perfil-servico) edge node [above right] {$1$} (perfil);
 
-  \path (rel2) edge node [right] {$m$} (servico);
+  \path (rel-perfil-servico) edge node [right] {$m$} (servico);
  
   \node[isa] (especializacao) [right = 3.5cm of instituicao] {} edge (pessoa);
 
@@ -96,10 +96,10 @@ draw, black, thick, minimum size=3em]
 
   \node[attribute] (id-docente) [below = 1cm of docente] {\underline{Id}} edge (docente);
   
-  \node[attribute] (funcionario-especialidade) [below = 0.8cm of rel1] {Especialidade} edge (funcionario);
+  \node[attribute] (funcionario-especialidade) [below = 0.8cm of rel-pessoa-perfil] {Especialidade} edge (funcionario);
   
   
-  \node[attribute] (funcionario-funcao-tecnica) [left = 0.8cm of rel2] {Função técnica} edge (funcionario);
+  \node[attribute] (funcionario-funcao-tecnica) [left = 0.8cm of rel-perfil-servico] {Função técnica} edge (funcionario);
 
   \node[attribute] (funcionario-id) [right = 1cm of funcionario] {\underline{Id}} edge (funcionario);
   
@@ -119,18 +119,18 @@ draw, black, thick, minimum size=3em]
   
   \node[attribute] (data-criacao) [above left = 0.8cm of disciplina] {Data criação} edge (disciplina);
 
-  \node[relationship] (rel3) [below right = 3.5cm of docente] {} edge (docente) edge (disciplina) edge (aluno);
-  \node[attribute] (nota-obtida) [right = 0.5cm of codigo-disciplina] {Nota obtida} edge (rel3);
+  \node[relationship] (rel-oferecimento) [below right = 3.5cm of docente] {} edge (docente) edge (disciplina) edge (aluno);
+  \node[attribute] (nota-obtida) [right = 0.5cm of codigo-disciplina] {Nota obtida} edge (rel-oferecimento);
   
-  \node[attribute] (data-inicio) [right = 0.5cm of nota-obtida] {Data início} edge (rel3);
+  \node[attribute] (data-inicio) [right = 0.5cm of nota-obtida] {Data início} edge (rel-oferecimento);
   
-  \node[attribute] (data-fim) [right = 0.5cm of data-inicio] {Data fim} edge (rel3);
+  \node[attribute] (data-fim) [right = 0.5cm of data-inicio] {Data fim} edge (rel-oferecimento);
   
-  \path (rel3) edge node [above right] {$n$} (docente);
+  \path (rel-oferecimento) edge node [above right] {$n$} (docente);
 
-  \path (rel3) edge node [above left] {$m$} (disciplina);
+  \path (rel-oferecimento) edge node [above left] {$m$} (disciplina);
   
-    \path (rel3) edge node [above] {$o$} (aluno);
+    \path (rel-oferecimento) edge node [above] {$o$} (aluno);
 
    
   \path (especializacao) edge node [above right] {\{Parcial\}} (pessoa);
