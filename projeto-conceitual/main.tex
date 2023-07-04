@@ -11,130 +11,125 @@
 \tikzstyle{isa} = [isosceles triangle, isosceles triangle apex angle=70, shape border rotate=270,
 draw, black, thick, minimum size=3em]
 
-
-
 \usetikzlibrary{er,positioning}
 
 \begin{document}
 
 \begin{tikzpicture}[auto,node distance=4cm]
 
+% ------------------------------
+%  Entidades e Relacionamentos
+% ------------------------------
+
   \node[entity] (pessoa) {Pessoa};
-  
-  \node[attribute] (data-nascimento) [above = 2.3cm of pessoa] {Data nascimento} edge (pessoa);
-  
-  \node[attribute] (nome) [left = 1cm of data-nascimento] {Nome} edge (pessoa);
-  
-  \node[attribute] (cpf) [right = 1cm of data-nascimento] {CPF} edge (pessoa);
-  
-  \node[attribute] (endereco) [below left = 2cm of data-nascimento] {Endereço} edge (pessoa);
-  
-  \node[attribute] (instituicao) [below left = 2cm of pessoa] {Instituição} edge (pessoa);
-  
-  \node[attribute] (id-pessoa) [below = 1.2cm of pessoa] {\underline{Id}} edge (pessoa);
-  
-  \node[attribute] (login) [below = 1cm of endereco] {Login} edge (pessoa);
-  
-  \node[attribute] (senha) [below = 1.2cm of cpf] {Senha} edge (pessoa);
 
-  \node[relationship] (rel-pessoa-perfil) [right = 4cm of pessoa] {} edge (pessoa) ;
+  \node[relationship] (rel-pessoa-perfil) [right = 2cm of pessoa] {} edge (pessoa);
+
+  \node[entity] (perfil) [right = 2cm of rel-pessoa-perfil] {Perfil} edge (rel-pessoa-perfil);
+
+  \node[relationship] (rel-perfil-servico) [right = 2cm of perfil] {} edge (perfil);
+
+  \node[entity] (servico) [right = 2cm of rel-perfil-servico] {Serviço} edge (rel-perfil-servico);
+
+  \node[isa] (especializacao) [below right = 2 and 2 cm of pessoa] {} edge (pessoa);
+
+  \node[entity] (funcionario) [below left = 5mm and 2cm of especializacao] {Funcionário} edge (especializacao);
+
+  \node[entity] (aluno) [below = 2cm of especializacao] {Aluno} edge (especializacao);
+
+  \node[entity] (docente) [below right = 5mm and 2cm of especializacao] {Docente} edge (especializacao);
+
+  \node[relationship] (rel-oferecimento) [right = 2cm of aluno] {} edge (docente) edge (aluno);
+
+  \node[entity] (disciplina) [right = 2cm of rel-oferecimento] {Disciplina} edge (rel-oferecimento);
   
-  \node[entity] (perfil) [right = 4cm of rel-pessoa-perfil] {Perfil} edge (rel-pessoa-perfil);
-
-  \node[attribute] (codigo-perfil) [above = 1cm of perfil] {Código perfil} edge (perfil);
-
-  \node[attribute] (id-perfil) [right = 2cm of codigo-perfil] {\underline{Id}} edge (perfil);
+% ---------------------
+%    CARDINALIDADES
+% ---------------------
   
-  \node[attribute] (tipo-perfil) [right = 2cm of perfil] {Tipo perfil} edge (perfil);
+  \path (rel-oferecimento) edge node [left] {$n$} (docente);
+  \path (rel-oferecimento) edge node [above] {$m$} (disciplina);
+  \path (rel-oferecimento) edge node [above] {$o$} (aluno);
 
-%  \node[attribute] (visitante) [above right = 2cm of tipo-perfil] {Visitante} edge (tipo-perfil);
-
- % \node[attribute] (academico) [above left = 2cm of tipo-perfil] {Acadêmico} edge (tipo-perfil);
-
- % \node[attribute] (administrativo) [above = 2cm of tipo-perfil] {Administrativo} edge (tipo-perfil);
-
-  \node[relationship] (rel-perfil-servico) [below right = 2cm of perfil] {} edge (perfil) ;
-
-  \node[entity] (servico) [below = 2cm of rel-perfil-servico] {Serviço} edge (rel-perfil-servico);
-
-  \node[attribute] (codigo-servico) [above right = 2cm of servico] {Código serviço} edge (servico);
-  
-  \node[attribute] (descricao) [right = 2cm of servico] {Descrição} edge (servico);
-
-  \node[attribute] (servico-tipo) [below = 1.7cm of servico] {Tipo serviço} edge (servico);
-
-  \node[attribute] (id-servico) [below right = 2cm of servico] {\underline{Id}} edge (servico);
- 
- % \node[attribute] (visualizacao) [below right = 1cm of servico-tipo] {Visualização} edge (servico-tipo);
-  
-%  \node[attribute] (insercao) [below left = 1.5cm of servico-tipo] {Inserção} edge (servico-tipo);
-  
-%  \node[attribute] (alteracao) [right = 1.5cm of servico-tipo] {Alteração} edge (servico-tipo);
-
-%  \node[attribute] (remocao) [below = 1.5cm of servico-tipo] {Remoção} edge (servico-tipo);
-  
   \path (rel-pessoa-perfil) edge node [above] {$n$} (pessoa);
-  \path (rel-pessoa-perfil) edge node [above] {$m$}(perfil);
+  \path (rel-pessoa-perfil) edge node [above] {$m$} (perfil);
 
-  \path (rel-perfil-servico) edge node [above right] {$1$} (perfil);
-
-  \path (rel-perfil-servico) edge node [right] {$m$} (servico);
- 
-  \node[isa] (especializacao) [right = 3.5cm of instituicao] {} edge (pessoa);
-
-  \node[entity] (docente) [below left = 1cm of especializacao] {Docente} edge (especializacao);
-  
-  \node[entity] (funcionario) [right = 6cm of docente] {Funcionário} edge (especializacao);
-
-  \node[entity] (aluno) [below right = 4cm of especializacao] {Aluno} edge (especializacao);
-
-  \node[attribute] (docente-especialidade) [left = 0.6cm of docente]{Especialidade} edge (docente);
-
-  \node[attribute] (docente-funcao-tecnica) [below = 1cm of docente-especialidade] {Função técnica} edge (docente);
-
-  \node[entity] (disciplina) [below = 4cm of docente] {Disciplina};
-
-  \node[attribute] (id-docente) [below = 1cm of docente] {\underline{Id}} edge (docente);
-  
-  \node[attribute] (funcionario-especialidade) [below = 0.8cm of rel-pessoa-perfil] {Especialidade} edge (funcionario);
-  
-  
-  \node[attribute] (funcionario-funcao-tecnica) [left = 0.8cm of rel-perfil-servico] {Função técnica} edge (funcionario);
-
-  \node[attribute] (funcionario-id) [right = 1cm of funcionario] {\underline{Id}} edge (funcionario);
-  
-  \node[attribute] (curso) [right = 1cm of aluno] {Curso} edge (aluno);
-  
-  \node[attribute] (nota-ingresso) [below right = 1cm of aluno] {Nota ingresso} edge (aluno);
-
-  \node[attribute] (id-aluno) [above = 0.7cm of aluno] {\underline{Id}} edge (aluno);
-  
-  \node[attribute] (nome-disciplina) [left = 2cm of disciplina] {Nome} edge (disciplina);
-
-  \node[attribute] (ementa) [below = 1cm of nome-disciplina] {Ementa} edge (disciplina);
-  
-  \node[attribute] (codigo-disciplina) [below = 1.2cm of disciplina] {Código disciplina} edge (disciplina);
-  
-    \node[attribute] (id-disciplina) [above = 0.7cm of disciplina] {\underline{Id}} edge (disciplina);
-  
-  \node[attribute] (data-criacao) [above left = 0.8cm of disciplina] {Data criação} edge (disciplina);
-
-  \node[relationship] (rel-oferecimento) [below right = 3.5cm of docente] {} edge (docente) edge (disciplina) edge (aluno);
-  \node[attribute] (nota-obtida) [right = 0.5cm of codigo-disciplina] {Nota obtida} edge (rel-oferecimento);
-  
-  \node[attribute] (data-inicio) [right = 0.5cm of nota-obtida] {Data início} edge (rel-oferecimento);
-  
-  \node[attribute] (data-fim) [right = 0.5cm of data-inicio] {Data fim} edge (rel-oferecimento);
-  
-  \path (rel-oferecimento) edge node [above right] {$n$} (docente);
-
-  \path (rel-oferecimento) edge node [above left] {$m$} (disciplina);
-  
-    \path (rel-oferecimento) edge node [above] {$o$} (aluno);
-
+  \path (rel-perfil-servico) edge node [above] {$1$} (perfil);
+  \path (rel-perfil-servico) edge node [above] {$m$} (servico);
    
-  \path (especializacao) edge node [above right] {\{Parcial\}} (pessoa);
+  % \path (especializacao) edge node [above right] {\{Parcial\}} (pessoa);
+
+% ---------------------
+%        PESSOA
+% ---------------------
+
+  \node[attribute] (data-nascimento) [above = 2cm of pessoa] {Data nascimento} edge (pessoa);
+  \node[attribute] (nome) [above left = 1cm and 0 of pessoa] {Nome} edge (pessoa);
+  \node[attribute] (cpf) [above right = 1cm and 0 of pessoa] {CPF} edge (pessoa);
+  \node[attribute] (endereco) [above left = 3mm and 1.2cm of pessoa] {Endereço} edge (pessoa);
+  \node[attribute] (instituicao) [left = 1cm of pessoa] {Instituição} edge (pessoa);
+  \node[attribute] (id-pessoa) [below = 1cm of pessoa] {\underline{Id}} edge (pessoa);
+  \node[attribute] (login) [below left = 1cm and 0 of pessoa] {Login} edge (pessoa);
+  \node[attribute] (senha) [below left = 3mm and 1.2cm of pessoa] {Senha} edge (pessoa);
+
+% ---------------------
+%        PERFIL
+% ---------------------
+
+  \node[attribute] (codigo-perfil) [below left = 5mm and 0 of perfil] {Código perfil} edge (perfil);
+  \node[attribute] (tipo-perfil) [below right = 5mm and 0 of perfil] {Tipo perfil} edge (perfil);
+  \node[attribute] (id-perfil) [below = 1cm of perfil] {\underline{Id}} edge (perfil);
+
+% ---------------------
+%       SERVICO
+% ---------------------
+
+  \node[attribute] (codigo-servico) [above = 1cm of servico] {Código serviço} edge (servico);
+  \node[attribute] (descricao) [above right = 0 and 1cm of servico] {Descrição} edge (servico);
+  \node[attribute] (servico-tipo) [below right = 0 and 1cm of servico] {Tipo serviço} edge (servico);
+  \node[attribute] (id-servico) [below = 5mm of servico] {\underline{Id}} edge (servico);
+ 
+% ---------------------
+%       DOCENTE
+% ---------------------
+
+  \node[attribute] (docente-especialidade) [above right = 0 and 1cm of docente]{Especialidade} edge (docente);
+  \node[attribute] (docente-funcao-tecnica) [above right = 1cm and 0 of docente] {Função técnica} edge (docente);
+  \node[attribute] (id-docente) [above left = 5mm and 0 of docente] {\underline{Id}} edge (docente);
   
+% ---------------------
+%     FUNCIONARIO
+% ---------------------
+
+  \node[attribute] (funcionario-especialidade) [above left = 0 and 1cm of funcionario] {Especialidade} edge (funcionario);
+  \node[attribute] (funcionario-funcao-tecnica) [below left = 0 and 1cm of funcionario] {Função técnica} edge (funcionario);
+  \node[attribute] (funcionario-id) [below = 5mm of funcionario] {\underline{Id}} edge (funcionario);
+  
+% ---------------------
+%        ALUNO
+% ---------------------
+
+  \node[attribute] (curso) [below left = 8mm and 0 of aluno] {Curso} edge (aluno);
+  \node[attribute] (nota-ingresso) [below left = 0 and 1cm of aluno] {Nota ingresso} edge (aluno);
+  \node[attribute] (id-aluno) [above right = 5mm of aluno] {\underline{Id}} edge (aluno);
+  
+% ---------------------
+%      DISCIPLINA 
+% ---------------------
+
+  \node[attribute] (nome-disciplina) [above right = 4mm and 6mm of disciplina] {Nome} edge (disciplina);
+  \node[attribute] (ementa) [right = 1cm of disciplina] {Ementa} edge (disciplina);
+  \node[attribute] (codigo-disciplina) [below right = 1cm of disciplina] {Código disciplina} edge (disciplina);
+  \node[attribute] (id-disciplina) [above left = 3mm and 7mm of disciplina] {\underline{Id}} edge (disciplina);
+  \node[attribute] (data-criacao) [above = 8mm of disciplina] {Data criação} edge (disciplina);
+
+% ---------------------
+%      OFERECIMENTO 
+% ---------------------
+
+  \node[attribute] (nota-obtida) [below left = 1cm of rel-oferecimento] {Nota obtida} edge (rel-oferecimento);
+  \node[attribute] (data-inicio) [below = 1.5cm of rel-oferecimento] {Data início} edge (rel-oferecimento);
+  \node[attribute] (data-fim) [below right = 1cm of rel-oferecimento] {Data fim} edge (rel-oferecimento);
   
 \end{tikzpicture}
     
