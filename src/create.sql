@@ -1,4 +1,3 @@
-
 CREATE TABLE "pessoa"(
 	id SERIAL,
 	cpf CHAR(14) NOT NULL,  /*example: 123.456.789-00*/
@@ -9,7 +8,7 @@ CREATE TABLE "pessoa"(
 	instituicao VARCHAR(50) NOT NULL,
 	data_nascimento DATE,
 	PRIMARY KEY (id),
-	UNIQUE (cpf)    
+	UNIQUE (cpf)
 );
 
 CREATE TABLE "perfil"(
@@ -22,15 +21,15 @@ CREATE TABLE "perfil"(
 
 CREATE TABLE "servico"(
 	id SERIAL,
-	codigo VARCHAR(10) NOT NULL,	
+	codigo VARCHAR(10) NOT NULL,
 	descricao VARCHAR(1000) NOT NULL,
 	tipo VARCHAR(50) NOT NULL,
 	id_perfil INT NOT NULL,
 	PRIMARY KEY (id),
 	UNIQUE (codigo),
-	CONSTRAINT fk_perfil 
+	CONSTRAINT fk_perfil
 		FOREIGN KEY (id_perfil)
-			REFERENCES perfil(id)  
+			REFERENCES perfil(id)
 );
 
 CREATE TABLE "docente"(
@@ -79,7 +78,7 @@ CREATE TABLE "rel_pessoa_perfil"(
 			REFERENCES pessoa(id),
 	CONSTRAINT fk_perfil
 		FOREIGN KEY (id_perfil)
-			REFERENCES perfil(id) 
+			REFERENCES perfil(id)
 );
 
 CREATE TABLE "rel_docente_aluno_disciplina"(
@@ -100,5 +99,3 @@ CREATE TABLE "rel_docente_aluno_disciplina"(
 		FOREIGN KEY (id_disciplina)
 			REFERENCES disciplina(id)
 );
-
-	
