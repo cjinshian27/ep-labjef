@@ -31,6 +31,12 @@ listen_addresses = '*'
 password_encryption = scram-sha-256
 ```
 
+## Reiniciar servidor
+
+```shell
+$ sudo service postgresql restart
+```
+
 # Uso
 
 ## Preparação do ambiente
