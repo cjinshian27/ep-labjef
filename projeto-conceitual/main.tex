@@ -25,12 +25,13 @@ draw, black, thick, minimum size=3em]
   
   \node[attribute] (nome) [left = 1cm of data-nascimento] {Nome} edge (pessoa);
   
-  \node[attribute] (cpf) [right = 1cm of data-nascimento] {\underline{CPF}} edge (pessoa);
+  \node[attribute] (cpf) [right = 1cm of data-nascimento] {CPF} edge (pessoa);
   
   \node[attribute] (endereco) [below left = 2cm of data-nascimento] {Endereço} edge (pessoa);
   
   \node[attribute] (instituicao) [below left = 2cm of pessoa] {Instituição} edge (pessoa);
   
+  \node[attribute] (id-pessoa) [below = 1.2cm of pessoa] {\underline{Id}} edge (pessoa);
   
   \node[attribute] (login) [below = 1cm of endereco] {Login} edge (pessoa);
   
@@ -40,8 +41,10 @@ draw, black, thick, minimum size=3em]
   
   \node[entity] (perfil) [right = 4cm of rel1] {Perfil} edge (rel1);
 
-  \node[attribute] (codigo-perfil) [above = 1cm of perfil] {\underline{Código perfil}} edge (perfil);
+  \node[attribute] (codigo-perfil) [above = 1cm of perfil] {Código perfil} edge (perfil);
 
+  \node[attribute] (id-perfil) [right = 2cm of codigo-perfil] {\underline{Id}} edge (perfil);
+  
   \node[attribute] (tipo-perfil) [right = 2cm of perfil] {Tipo perfil} edge (perfil);
 
 %  \node[attribute] (visitante) [above right = 2cm of tipo-perfil] {Visitante} edge (tipo-perfil);
@@ -54,12 +57,14 @@ draw, black, thick, minimum size=3em]
 
   \node[entity] (servico) [below = 2cm of rel2] {Serviço} edge (rel2);
 
-  \node[attribute] (codigo-servico) [above right = 2cm of servico] {\underline{Código serviço}} edge (servico);
+  \node[attribute] (codigo-servico) [above right = 2cm of servico] {Código serviço} edge (servico);
   
   \node[attribute] (descricao) [right = 2cm of servico] {Descrição} edge (servico);
 
-  \node[attribute] (servico-tipo) [below left = 1.7cm of descricao] {Tipo serviço} edge (servico);
+  \node[attribute] (servico-tipo) [below = 1.7cm of servico] {Tipo serviço} edge (servico);
 
+  \node[attribute] (id-servico) [below right = 2cm of servico] {\underline{Id}} edge (servico);
+ 
  % \node[attribute] (visualizacao) [below right = 1cm of servico-tipo] {Visualização} edge (servico-tipo);
   
 %  \node[attribute] (insercao) [below left = 1.5cm of servico-tipo] {Inserção} edge (servico-tipo);
@@ -88,23 +93,29 @@ draw, black, thick, minimum size=3em]
   \node[attribute] (docente-funcao-tecnica) [below = 1cm of docente-especialidade] {Função técnica} edge (docente);
 
   \node[entity] (disciplina) [below = 4cm of docente] {Disciplina};
- 
+
+  \node[attribute] (id-docente) [below = 1cm of docente] {\underline{Id}} edge (docente);
   
   \node[attribute] (funcionario-especialidade) [below = 0.8cm of rel1] {Especialidade} edge (funcionario);
   
   
   \node[attribute] (funcionario-funcao-tecnica) [left = 0.8cm of rel2] {Função técnica} edge (funcionario);
 
+  \node[attribute] (funcionario-id) [right = 1cm of funcionario] {\underline{Id}} edge (funcionario);
+  
   \node[attribute] (curso) [right = 1cm of aluno] {Curso} edge (aluno);
   
   \node[attribute] (nota-ingresso) [below right = 1cm of aluno] {Nota ingresso} edge (aluno);
+
+  \node[attribute] (id-aluno) [above = 0.7cm of aluno] {\underline{Id}} edge (aluno);
   
   \node[attribute] (nome-disciplina) [left = 2cm of disciplina] {Nome} edge (disciplina);
 
   \node[attribute] (ementa) [below = 1cm of nome-disciplina] {Ementa} edge (disciplina);
   
-  \node[attribute] (codigo-disciplina) [below = 1.2cm of disciplina] {\underline{Código disciplina}} edge (disciplina);
+  \node[attribute] (codigo-disciplina) [below = 1.2cm of disciplina] {Código disciplina} edge (disciplina);
   
+    \node[attribute] (id-disciplina) [above = 0.7cm of disciplina] {\underline{Id}} edge (disciplina);
   
   \node[attribute] (data-criacao) [above left = 0.8cm of disciplina] {Data criação} edge (disciplina);
 
@@ -122,7 +133,7 @@ draw, black, thick, minimum size=3em]
   \path (rel3) edge node [above] {$o$} (aluno);
 
    
-  \path (especializacao) edge node [below left] {\{Parcial\}} (pessoa);
+  \path (especializacao) edge node [above right] {\{Parcial\}} (pessoa);
   
   
 \end{tikzpicture}
