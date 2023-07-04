@@ -40,6 +40,7 @@ $ sudo -u postgres psql
 
 postgres=# CREATE USER testeusr WITH ENCRYPTED PASSWORD 'testeusr';
 postgres=# CREATE DATABASE teste WITH OWNER testeusr;
+postgres=# \c teste;
 ```
 
 ## Scripts
@@ -49,32 +50,32 @@ postgres=# CREATE DATABASE teste WITH OWNER testeusr;
 Criar tabelas.
 
 ```shell
-psql -U testeusr -d teste -a -f path_to/create.sql
+teste=# \i path_to/create.sql
 ```
 
 Criar funções para as consultas.
 
 ```shell
-psql -U testeusr -d teste -a -f path_to/query.sql
+teste=# \i path_to/query.sql
 ```
 
 Inserir instâncias nas tabelas.
 
 ```shell
-psql -U testeusr -d teste -a -f path_to/insert.sql
+teste=# \i path_to/insert.sql
 ```
 
 Remover tabelas.
 
 ```shell
-psql -U testeusr -d teste -a -f path_to/drop.sql
+teste=# \i path_to/drop.sql
 ```
 
 ## Desfazer ambiente
 
 
 ```shell
-$ sudo -u postgres psql
+teste=# \c postgres
 
 postgres=# DROP DATABASE IF EXISTS teste;
 postgres=# DROP USER IF EXISTS testeusr;
