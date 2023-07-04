@@ -1,118 +1,173 @@
-% arara: pdflatex
+\documentclass{article}
 
-\documentclass[12pt,a4paper, landscape]{article}
-\usepackage{tikz}
-\usetikzlibrary{shapes,positioning,calc}
-\colorlet{lightgray}{gray!20}
+\usepackage{float}
+\restylefloat{table}
 
-\usepackage{geometry}
- \geometry{
- a4paper,
- right=15mm,
- left=15mm,
- top=15mm,
- bottom=15mm
- }
+\usepackage[table]{xcolor}
+\colorlet{lightgray}{gray!10}
 
+\usepackage[margin=1cm]{geometry}
 \begin{document}
 
-\begin{tikzpicture}[relation/.style={rectangle split, rectangle split parts=#1, rectangle split part align=base, draw, anchor=center, align=center, text height=3mm, text centered}]\hspace*{-0.3cm}
+\noindent
+\textbf{PESSOA}
+\vspace{-5pt}
 
-% RELATIONS
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.5}
+  \rowcolors{1}{lightgray}{lightgray}
+  \begin{tabular}{|c|c|c|c|c|c|c|c|}
+    \hline
+    \underline{id} &
+    cpf &
+    nome & 
+    endereco &
+    senha &
+    login &
+    instituicao &
+    data\_nascimento \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\node (pessoa-titulo) {\textbf{PESSOA}};
+\noindent
+\textbf{PERFIL}
+\vspace{-5pt}
 
-\node [relation=8, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of pessoa-titulo.west, anchor=west] (pessoa)
-{\underline{id}%
-\nodepart{two} cpf
-\nodepart{three}   nome
-\nodepart{four} endereco
-\nodepart{five} senha
-\nodepart{six} login
-\nodepart{seven} instituicao
-\nodepart{eight} data\_nascimento
-};
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.5}
+  \rowcolors{1}{lightgray}{lightgray}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    
+    \underline{id} &
+    codigo &
+    tipo  \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\node [below=1cm of pessoa.west, anchor=west] (perfil-titulo) {\textbf{PERFIL}};
+\noindent
+\textbf{SERVIÇO}
+\vspace{-5pt}
 
-\node [relation=3, rectangle split horizontal, rectangle split part fill={lightgray!50}, below=0.6cm of perfil-titulo.west, anchor=west] (perfil)
-{\underline{id}
-\nodepart{two}{codigo}%
-\nodepart{three} tipo
-};
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.5}
+  \rowcolors{1}{lightgray}{lightgray}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \underline{id} &
+    codigo &
+    descricao &
+    tipo &
+    id\_perfil \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\node [below=1cm of perfil.west, anchor=west] (servico-titulo) {\textbf{SERVIÇO}};
+\noindent
+\textbf{DOCENTE}
+\vspace{-5pt}
 
-\node [relation=5, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of servico-titulo.west, anchor=west] (servico)
-{\underline{id}
-\nodepart{two} codigo%
-\nodepart{three}   descricao
-\nodepart{four} tipo
-\nodepart{five} id\_perfil
-};
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.5}
+  \rowcolors{1}{lightgray}{lightgray}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \underline{id} &
+    cpf &
+    especialidade &
+    funcao\_tecnica \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\node [below=1cm of servico.west, anchor=west] (docente-titulo) {\textbf{DOCENTE}};
+\noindent
+\textbf{FUNCIONARIO}
+\vspace{-5pt}
 
-\node [relation=4, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of docente-titulo.west, anchor=west] (docente)
-{\underline{id}
-\nodepart{two} cpf\_docente%
-\nodepart{three}   especialidade
-\nodepart{four} funcao\_tecnica
-};
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.5}
+  \rowcolors{1}{lightgray}{lightgray}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \underline{id} &
+    cpf &
+    especialidade &
+    funcao\_tecnica \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\node [below=1cm of docente.west, anchor=west] (funcionario-titulo) {\textbf{FUNCIONÁRIO}};
+\noindent
+\textbf{ALUNO}
+\vspace{-5pt}
 
-\node [relation=4, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of funcionario-titulo.west, anchor=west] (funcionario)
-{\underline{id}
-\nodepart{two} cpf\_funcionario%
-\nodepart{three}   especialidade
-\nodepart{four} funcao\_tecnica
-};
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.5}
+  \rowcolors{1}{lightgray}{lightgray}
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    \underline{id} &
+    cpf &
+    curso &
+    nota\_ingresso \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\node [below=1cm of funcionario.west, anchor=west] (aluno-titulo) {\textbf{ALUNO}};
+\noindent
+\textbf{DISCIPLINA}
+\vspace{-5pt}
 
-\node [relation=4, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of aluno-titulo.west, anchor=west] (aluno)
-{\underline{id}
-\nodepart{two}{cpf\_aluno}%
-\nodepart{three}   curso
-\nodepart{four} nota\_ingresso
-};
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.5}
+  \rowcolors{1}{lightgray}{lightgray}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \underline{id} &
+    codigo &
+    nome &
+    ementa &
+    data\_criacao \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\node [below=1cm of aluno.west, anchor=west] (disciplina-titulo) {\textbf{DISCIPLINA}};
+\noindent
+\textbf{REL\_PESSOA\_PERFIL}
+\vspace{-5pt}
 
-\node [relation=5, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of disciplina-titulo.west, anchor=west] (disciplina)
-{\underline{id}
-\nodepart{two} codigo%
-\nodepart{three}   nome
-\nodepart{four} ementa
-\nodepart{five} data\_criacao
-};
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.5}
+  \rowcolors{1}{lightgray}{lightgray}
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \underline{id} &
+    id\_pessoa &
+    id\_perfil \\
+    \hline
+  \end{tabular}
+\end{table}
 
-\node [below=1cm of disciplina.west, anchor=west] (relacao-pessoa-perfil-titulo) {\textbf{REL\_PESSOA\_PERFIL}};
+\noindent
+\textbf{REL\_DOCENTE\_ALUNO\_DISCIPLINA}
+\vspace{-5pt}
 
-\node [relation=3, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of relacao-pessoa-perfil-titulo.west, anchor=west] (relacao-pessoa-perfil)
-{\underline{id}
-\nodepart{two} id\_pessoa%
- \nodepart{three} id\_perfil%
-};
-
-\node [below=1cm of relacao-pessoa-perfil.west, anchor=west] (relacao-docente-aluno-disciplina-titulo) {\textbf{REL\_DOCENTE\_ALUNO\_DISCIPLINA}};
-
-\node [relation=7, rectangle split horizontal, rectangle split part fill={lightgray!50}, anchor=north west, below=0.6cm of relacao-docente-aluno-disciplina-titulo.west, anchor=west] (relacao-pessoa-perfil)
-{
-\underline{id}
-\nodepart{two} id\_docente%
- \nodepart{three} id\_aluno
- \nodepart{four} id\_disciplina%
- \nodepart{five} 
-nota\_obtida
-\nodepart{six} 
- data\_inicio
-\nodepart{seven} 
- data\_fim
-};
-
-
-\end{tikzpicture}
+\begin{table}[H]
+  \renewcommand{\arraystretch}{1.5}
+  \rowcolors{1}{lightgray}{lightgray}
+  \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+    \underline{id} &
+    id\_docente &
+    id\_aluno &
+    id\_disciplina &
+    nota\_obtida &
+    data\_inicio &
+    data\_fim \\
+    \hline
+  \end{tabular}
+\end{table}
 
 \end{document}
