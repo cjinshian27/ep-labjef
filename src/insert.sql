@@ -18,43 +18,43 @@ VALUES
 
 INSERT INTO "perfil"(codigo, tipo)
 VALUES 
-('Visitante'),
-('Administrativo'),
-('Administrativo'),
-('Academico'),
-('Academico'),
-('Academico'),
-('Academico'),
-('Academico'),
-('Academico'),
-('Academico'),
-('Academico'),
-('Academico'),
-('Academico'),
-('Academico');
+('aaaa', 'Visitante'),
+('bbbb', 'Administrativo'),
+('cccc', 'Administrativo'),
+('dddd', 'Academico'),
+('eeee', 'Academico'),
+('ffff', 'Academico'),
+('gggg', 'Academico'),
+('hhhh', 'Academico'),
+('iiii', 'Academico'),
+('jjjj', 'Academico'),
+('kkkk', 'Academico'),
+('llll', 'Academico'),
+('mmmm', 'Academico'),
+('nnnn', 'Academico');
 
-INSERT INTO "servico"(descricao, tipo, id_perfil)
+INSERT INTO "servico"(codigo, descricao, tipo, id_perfil)
 VALUES
-('-', 'Visualização', 1),
-('-', 'Inserção', 2),
-('-', 'Remoção', 2),
-('-', 'Visualização', 3),
-('-', 'Alteração', 4),
-('-', 'Inserção', 4),
-('-', 'Remoção', 5),
-('-', 'Alteração', 5),
-('-', 'Visualização', 5),
-('-', 'Alteração', 6),
-('-', 'Visualização', 7),
-('-', 'Remoção', 8),
-('-', 'Alteração', 9),
-('-', 'Remoção', 10),
-('-', 'Alteração', 11),
-('-', 'Visualização', 12),
-('-', 'Inserção', 12),
-('-', 'Inserção', 13),
-('-', 'Alteração', 13),
-('-', 'Visualização', 14);
+('aaaa', '-', 'Visualização', 1),
+('bbbb', '-', 'Inserção', 2),
+('cccc', '-', 'Remoção', 2),
+('dddd', '-', 'Visualização', 3),
+('eeee', '-', 'Alteração', 4),
+('ffff', '-', 'Inserção', 4),
+('gggg', '-', 'Remoção', 5),
+('hhhh', '-', 'Alteração', 5),
+('iiii', '-', 'Visualização', 5),
+('jjjj', '-', 'Alteração', 6),
+('kkkk', '-', 'Visualização', 7),
+('llll', '-', 'Remoção', 8),
+('mmmm', '-', 'Alteração', 9),
+('nnnn', '-', 'Remoção', 10),
+('oooo', '-', 'Alteração', 11),
+('pppp', '-', 'Visualização', 12),
+('qqqq', '-', 'Inserção', 12),
+('rrrr', '-', 'Inserção', 13),
+('ssss', '-', 'Alteração', 13),
+('tttt', '-', 'Visualização', 14);
 
 INSERT INTO "docente"(cpf_docente, especialidade, funcao_tecnica)
 VALUES 
