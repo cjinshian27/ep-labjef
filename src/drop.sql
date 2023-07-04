@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS rel_pessoa_perfil;
 DROP TABLE IF EXISTS rel_docente_aluno_disciplina;
+DROP TABLE IF EXISTS rel_oferecimento;
 DROP TABLE IF EXISTS servico;
 DROP TABLE IF EXISTS docente;
 DROP TABLE IF EXISTS funcionario;
