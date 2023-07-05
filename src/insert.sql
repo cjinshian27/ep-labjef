@@ -18,46 +18,29 @@ VALUES
 
 INSERT INTO "perfil"(codigo, tipo)
 VALUES 
-('aaaa', 'Visitante'),
-('bbbb', 'Administrativo'),
-('cccc', 'Administrativo'),
-('dddd', 'Academico'),
-('eeee', 'Academico'),
-('ffff', 'Academico'),
-('gggg', 'Academico'),
-('hhhh', 'Academico'),
-('iiii', 'Academico'),
-('jjjj', 'Academico'),
-('kkkk', 'Academico'),
-('llll', 'Academico'),
-('mmmm', 'Academico'),
-('nnnn', 'Academico');
+('a', 'Visitante'),
+('b', 'Administrativo'),
+('c', 'Administrativo'),
+('d', 'Academico'),
+('e', 'Academico'),
+('f', 'Academico');
 
 INSERT INTO "servico"(codigo, descricao, tipo, id_perfil)
 VALUES
-('aaaa', '-', 'Visualização', 1),
-('bbbb', '-', 'Inserção', 2),
-('cccc', '-', 'Remoção', 2),
-('dddd', '-', 'Visualização', 3),
-('eeee', '-', 'Alteração', 4),
-('ffff', '-', 'Inserção', 4),
-('gggg', '-', 'Remoção', 5),
-('hhhh', '-', 'Alteração', 5),
-('iiii', '-', 'Visualização', 5),
-('jjjj', '-', 'Alteração', 6),
-('kkkk', '-', 'Visualização', 7),
-('llll', '-', 'Remoção', 8),
-('mmmm', '-', 'Alteração', 9),
-('nnnn', '-', 'Remoção', 10),
-('oooo', '-', 'Alteração', 11),
-('pppp', '-', 'Visualização', 12),
-('qqqq', '-', 'Inserção', 12),
-('rrrr', '-', 'Inserção', 13),
-('ssss', '-', 'Alteração', 13),
-('tttt', '-', 'Visualização', 14);
+('a', '-', 'Visualização', 1),
+('b', '-', 'Inserção', 1),
+('c', '-', 'Remoção', 2),
+('d', '-', 'Visualização', 3),
+('e', '-', 'Alteração', 3),
+('f', '-', 'Inserção', 4),
+('g', '-', 'Remoção', 4),
+('h', '-', 'Alteração', 4),
+('i', '-', 'Visualização', 5),
+('j', '-', 'Alteração', 6),
+('k', '-', 'Visualização', 6);
 
 INSERT INTO "docente"(cpf_docente, especialidade, funcao_tecnica)
-VALUES 
+VALUES
 ('729.231.000-13', 'Palestrante', 'Docente'),
 ('592.004.927-99', 'IA', 'Docente'),
 ('804.128.142-00', 'Álgebra Linear', 'Docente'),
@@ -95,20 +78,17 @@ VALUES
 INSERT INTO "rel_pessoa_perfil"(id_pessoa, id_perfil)
 VALUES
 (1, 1),
-(2, 2),
+(1, 2),
 (3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10),
-(11, 11),
-(12, 12),
-(13, 13),
-(14, 14);
-
+(4, 2),
+(5, 2),
+(5, 6),
+(6, 4),
+(7, 5),
+(9, 2),
+(10, 1),
+(10, 2),
+(10, 3);
 
 INSERT INTO "rel_oferecimento"(id_docente, id_aluno, id_disciplina, nota_obtida, data_inicio, data_fim)
 VALUES
@@ -176,3 +156,21 @@ VALUES
 
 (7, 3, 7, 8.85, '2023-03-15', '2023-07-15'),
 (7, 4, 7, 8.50, '2023-03-15', '2023-07-15');
+
+INSERT INTO "rel_historico"(id_pessoa, id_servico)
+VALUES
+(1, 1),
+(2, 1),
+(3, 2),
+(4, 8),
+(5, 3),
+(6, 3),
+(1, 4),
+(2, 4),
+(3, 5),
+(4, 6),
+(6, 7),
+(7, 7),
+(8, 7),
+(9, 9);
+

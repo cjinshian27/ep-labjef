@@ -14,18 +14,17 @@ $$;
 
 -- Consulta 2
 -- Liste em ordem crescente o total de serviços utilizados agrupados pelo perfil de pessoas
-
-CREATE OR REPLACE FUNCTION total_servicos_por_perfil()
-RETURNS TABLE()
+CREATE OR REPLACE FUNCTION servicos_utilizados_por_perfil()
+RETURNS TABLE(id_perfil INT, servicos_utilizados BIGINT)
 LANGUAGE plpgsql AS
 $$
 BEGIN
-	RETURN QUERY
-	SELECT 
-	FROM 
-	WHERE
-	GROUP BY 
-	ORDER BY
+  RETURN QUERY
+  SELECT servico.id_perfil, COUNT(*) AS servicos_utilizados
+  FROM rel_historico, servico
+  WHERE rel_historico.id_servico = servico.id
+  GROUP BY servico.id_perfil
+  ORDER BY servicos_utilizados;
 END
 $$;
 
