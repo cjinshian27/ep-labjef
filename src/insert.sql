@@ -35,27 +35,27 @@ VALUES
 ('j', '-', 'Alteração'    , 6),
 ('k', '-', 'Visualização' , 6);
 
-INSERT INTO "docente"(cpf_docente, especialidade, funcao_tecnica)
+INSERT INTO "docente"(id_pessoa, especialidade, funcao_tecnica)
 VALUES
-('729.231.000-13', 'Palestrante'    , 'Ensino'),
-('592.004.927-99', 'IA'             , 'Ensino'),
-('804.128.142-00', 'Álgebra Linear' , 'Ensino'),
-('284.242.193-77', 'Cálculo'        , 'Ensino'),
-('242.490.024-30', 'Sistemas'       , 'Ensino'),
-('823.108.202-18', 'Álgebra Linear' , 'Diretoria'),
-('239.394.134-73', 'Teoria'         , 'Diretoria');
+( 4, 'Palestrante'    , 'Ensino'),
+( 5, 'IA'             , 'Ensino'),
+( 6, 'Álgebra Linear' , 'Ensino'),
+( 7, 'Cálculo'        , 'Ensino'),
+( 8, 'Sistemas'       , 'Ensino'),
+( 9, 'Álgebra Linear' , 'Diretoria'),
+(10, 'Teoria'         , 'Diretoria');
 
-INSERT INTO "funcionario"(cpf_funcionario, especialidade, funcao_tecnica)
+INSERT INTO "funcionario"(id_pessoa, especialidade, funcao_tecnica)
 VALUES
-('357.231.938-21', '-', 'Recepção da biblioteca'),
-('392.454.139-24', '-', 'Recepção de alunos');
+(1, '-', 'Recepção da biblioteca'),
+(3, '-', 'Recepção de alunos');
 
-INSERT INTO "aluno"(cpf_aluno, curso, nota_ingresso)
+INSERT INTO "aluno"(id_pessoa, curso, nota_ingresso)
 VALUES
-('120.395.772-55', 'Bacharelado em Ciência da Computação', 84.00),
-('439.293.130-67', 'Bacharelado em Ciência da Computação', 65.00),
-('239.872.033-01', 'Bacharelado em Ciência da Computação', 80.80),
-('283.103.193-39', 'Bacharelado em Ciência da Computação', 75.30);
+(1, 'Bacharelado em Ciência da Computação', 84.00),
+(2, 'Bacharelado em Ciência da Computação', 65.00),
+(3, 'Bacharelado em Ciência da Computação', 80.80),
+(4, 'Bacharelado em Ciência da Computação', 75.30);
 
 INSERT INTO "disciplina"(codigo, nome, ementa, data_criacao)
 VALUES

@@ -34,29 +34,29 @@ CREATE TABLE "servico"(
 
 CREATE TABLE "docente"(
 	id SERIAL,
-	cpf_docente CHAR(14) NOT NULL,
+	id_pessoa CHAR(14) NOT NULL,
 	especialidade VARCHAR(150) NOT NULL,
 	funcao_tecnica VARCHAR(150),
 	PRIMARY KEY (id),
-	UNIQUE (cpf_docente)
+	UNIQUE (id_pessoa)
 );
 
 CREATE TABLE "funcionario"(
 	id SERIAL,
-	cpf_funcionario CHAR(14) NOT NULL,
+	id_pessoa CHAR(14) NOT NULL,
 	especialidade VARCHAR(150) NOT NULL,
 	funcao_tecnica VARCHAR(150),
 	PRIMARY KEY (id),
-	UNIQUE (cpf_funcionario)
+	UNIQUE (id_pessoa)
 );
 
 CREATE TABLE "aluno"(
 	id SERIAL,
-	cpf_aluno CHAR(14) NOT NULL,
+	id_pessoa CHAR(14) NOT NULL,
 	curso VARCHAR(255) NOT NULL,
 	nota_ingresso DECIMAL(4, 2) NOT NULL,
 	PRIMARY KEY (id),
-	UNIQUE (cpf_aluno)
+	UNIQUE (id_pessoa)
 );
 
 CREATE TABLE "disciplina"(
