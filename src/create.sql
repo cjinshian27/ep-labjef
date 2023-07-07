@@ -92,7 +92,7 @@ CREATE TABLE "rel_oferecimento"(
 	data_inicio DATE NOT NULL,
 	data_fim DATE NOT NULL,
 	PRIMARY KEY (id),
-	UNIQUE (id_docente, id_aluno, id_disciplina),
+	UNIQUE (id_docente, id_aluno, id_disciplina, data_inicio),
 	CONSTRAINT fk_docente
 		FOREIGN KEY (id_docente)
 			REFERENCES docente(id),
