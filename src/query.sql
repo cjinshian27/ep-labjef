@@ -31,16 +31,28 @@ $$;
 -- Consulta 3
 -- Liste as 5 (cinco) disciplinas mais oferecidas com seus respectivos professores e alunos
 CREATE OR REPLACE FUNCTION cinco_disciplinas_mais_oferecidas()
-CREATE OR REPLACE FUNCTION 5_disciplinas_mais_oferecidas()
-RETURNS TABLE()
+RETURNS TABLE(id_disciplina INT, id_docente INT, id_aluno INT, num_oferecimentos BIGINT)
 LANGUAGE plpgsql AS
 $$
 BEGIN
-	RETURN QUERY
-	SELECT
-	FROM 
-	WHERE
-	ORDER BY
+  RETURN QUERY
+  WITH disciplinas_mais_oferecidas AS (
+    SELECT
+      rel_oferecimento.id_disciplina AS id,
+      COUNT(DISTINCT rel_oferecimento.data_inicio) AS num_oferecimentos
+    FROM rel_oferecimento
+    GROUP BY rel_oferecimento.id_disciplina
+    ORDER BY num_oferecimentos DESC
+    LIMIT 5
+  )
+  SELECT
+    oferecimento.id_disciplina,
+    oferecimento.id_docente,
+    oferecimento.id_aluno,
+    disciplinas_mais_oferecidas.num_oferecimentos
+  FROM rel_oferecimento as oferecimento, disciplinas_mais_oferecidas
+  WHERE oferecimento.id_disciplina = disciplinas_mais_oferecidas.id
+  ORDER BY disciplinas_mais_oferecidas.num_oferecimentos DESC, oferecimento.id_disciplina;
 END
 $$;
 
