@@ -59,15 +59,25 @@ $$;
 -- Consulta 4
 -- Liste os 5 docentes que mais ministraram disciplinas oferecidas no período de maio de 2020 a maio de 2023
 CREATE OR REPLACE FUNCTION cinco_docentes_que_mais_ministraram()
-CREATE OR REPLACE FUNCTION 5_docentes_que_mais_ministraram()
-RETURNS TABLE()
+RETURNS TABLE(id_docente INT, num_disciplinas_ministradas BIGINT)
 LANGUAGE plpgsql AS
 $$
 BEGIN
-	RETURN QUERY
-	SELECT
-	FROM 
-	WHERE
-	ORDER BY
+  RETURN QUERY
+  WITH disciplinas_por_docente AS (
+    SELECT DISTINCT
+      rel_oferecimento.id_docente,
+      rel_oferecimento.id_disciplina,
+      rel_oferecimento.data_inicio
+    FROM rel_oferecimento
+    WHERE rel_oferecimento.data_inicio >= '2020-05-01' AND rel_oferecimento.data_inicio < '2023-05-01'
+  )
+  SELECT
+    disciplinas_por_docente.id_docente,
+    COUNT(*) as num_disciplinas_ministradas
+  FROM disciplinas_por_docente
+  GROUP BY disciplinas_por_docente.id_docente
+  ORDER BY num_disciplinas_ministradas DESC
+  LIMIT 5;
 END
 $$;
