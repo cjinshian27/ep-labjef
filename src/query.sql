@@ -1,6 +1,6 @@
 -- Consulta 1
 -- Liste os serviços que podem ser utilizados por pessoas de acordo com os perfis
-CREATE OR REPLACE FUNCTION servico_por_pessoa()
+CREATE OR REPLACE FUNCTION servicos_por_pessoa()
 RETURNS TABLE (id_pessoa INT, id_servico INT)
 LANGUAGE plpgsql AS
 $$
@@ -30,7 +30,7 @@ $$;
 
 -- Consulta 3
 -- Liste as 5 (cinco) disciplinas mais oferecidas com seus respectivos professores e alunos
-
+CREATE OR REPLACE FUNCTION cinco_disciplinas_mais_oferecidas()
 CREATE OR REPLACE FUNCTION 5_disciplinas_mais_oferecidas()
 RETURNS TABLE()
 LANGUAGE plpgsql AS
@@ -46,7 +46,7 @@ $$;
 
 -- Consulta 4
 -- Liste os 5 docentes que mais ministraram disciplinas oferecidas no período de maio de 2020 a maio de 2023
-
+CREATE OR REPLACE FUNCTION cinco_docentes_que_mais_ministraram()
 CREATE OR REPLACE FUNCTION 5_docentes_que_mais_ministraram()
 RETURNS TABLE()
 LANGUAGE plpgsql AS
