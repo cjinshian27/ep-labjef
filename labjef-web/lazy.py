@@ -338,59 +338,61 @@ def generateListTemplate(table):
         columnName = to_lower_camel_case(column_name)
 
         attributes = f"""{attributes}
-                        <th>{column_type[1]}</th>"""
+              <th>{column_type[1]}</th>"""
 
         getters_setters = f"""{getters_setters}
-                            <td th:text="${{{{p.{columnName}}}}}">{column_type[1]}</td>"""
+                <td th:text="${{{{p.{columnName}}}}}">{column_type[1]}</td>"""
 
     return f'''<!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
+
 <head> 
-    <title>{table["plural_title"]}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <title>{table["plural_title"]}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
-        <div class="container px-5">
-            <a class="navbar-brand fw-bold" href="/">MAC0350 - {table["plural_title"]}</a>
-        </div>
-    </nav>
-
-    <div class="container px-5 pt-5">
-        <div class="row mb-2">
-            <div class="col">
-                <a class="btn btn-primary" href="#" th:href="@{{/{tableName}}}" role="button">Cadastrar Novo</a>
-            </div>
-        </div>
-        <div class="row gx-5 align-items-center">
-            <div class="col">
-                <table class="table" >
-                    <thead >
-                        <tr >
-                        <th>ID</th>{attributes}
-                        <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="p : ${{lista{PluralTableName}}}">
-                            <td th:text="${{{{p.id}}}}">1</td>{getters_setters}
-                            <td class="d-flex justify-content-end">
-                                <a href="#" class="btn btn-outline-primary me-2" th:href="@{{/{tableName}}} + '/' + ${{p.id}}">Atualizar</a>
-                                <form action="#" th:action="@{{/{tableName}}} + '/' + ${{p.id}}" th:method="delete" class="d-inline-block">
-                                    <button class="btn btn-outline-danger">Apagar</button>
-                                </form>
-                            </td>
-                        </tr> 
-                    </tbody>
-                </table>
-            </div>
-        </div>
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
+    <div class="container px-5">
+      <a class="navbar-brand fw-bold" href="/">MAC0350 - {table["plural_title"]}</a>
     </div>
-    
+  </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <div class="container px-5 pt-5">
+    <div class="row mb-2">
+      <div class="col">
+        <a class="btn btn-primary" href="#" th:href="@{{/{tableName}}}" role="button">Cadastrar Novo</a>
+      </div>
+    </div>
+    <div class="row gx-5 align-items-center">
+      <div class="col">
+        <table class="table" >
+          <thead >
+            <tr >
+            <th>ID</th>{attributes}
+            <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="p : ${{lista{PluralTableName}}}">
+              <td th:text="${{{{p.id}}}}">1</td>{getters_setters}
+              <td class="d-flex justify-content-end">
+                <a href="#" class="btn btn-outline-primary me-2" th:href="@{{/{tableName}}} + '/' + ${{p.id}}">Atualizar</a>
+                <form action="#" th:action="@{{/{tableName}}} + '/' + ${{p.id}}" th:method="delete" class="d-inline-block">
+                  <button class="btn btn-outline-danger">Apagar</button>
+                </form>
+              </td>
+            </tr> 
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
+
 </html>'''
 
 def generateFormTemplate(table):
@@ -406,37 +408,40 @@ def generateFormTemplate(table):
         columnName = to_lower_camel_case(column_name)
 
         attributes = f"""{attributes}
-                    <div class="mb-3">
-                        <label for="{columnName}" class="form-label">{column_type[1]}</label>
-                        <input type="{"date" if column_type[0] == "Date" else "text"}" class="form-control" id="{columnName}" placeholder="{column_type[1]}" th:field="*{{{columnName}}}" >
-                    </div>"""
+            <div class="mb-3">
+              <label for="{columnName}" class="form-label">{column_type[1]}</label>
+              <input type="{"date" if column_type[0] == "Date" else "text"}" class="form-control" id="{columnName}" placeholder="{column_type[1]}" th:field="*{{{columnName}}}" >
+            </div>"""
 
     return f'''<!DOCTYPE HTML>
 <html xmlns:th="https://www.thymeleaf.org">
+
 <head> 
-    <title>Cadastro de {table["title"]}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <title>Cadastro de {table["title"]}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
-        <div class="container px-5">
-            <a class="navbar-brand fw-bold" href="/{pluralTableName}">MAC0350 - Cadastro de {table["title"]}</a>
-        </div>
-    </nav>
-    <div class="container px-5 pt-5">
-        <div class="row">
-            <div class="col">
-                <form action="#" th:action="@{{/{tableName}}}" th:object="${{{tableName}}}" method="post">
-                    <input type="hidden" th:field="*{{id}}" />{attributes}
-                    <button type="submit" class="btn btn-primary">Salvar</button>
-                    <a href="#" th:href="@{{/{pluralTableName}}}" class="btn btn-secondary">Voltar</a>
-                </form>
-            </div>
-        </div>
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
+    <div class="container px-5">
+      <a class="navbar-brand fw-bold" href="/{pluralTableName}">MAC0350 - Cadastro de {table["title"]}</a>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  </nav>
+  <div class="container px-5 pt-5">
+    <div class="row">
+      <div class="col">
+        <form action="#" th:action="@{{/{tableName}}}" th:object="${{{tableName}}}" method="post">
+          <input type="hidden" th:field="*{{id}}" />{attributes}
+          <button type="submit" class="btn btn-primary">Salvar</button>
+          <a href="#" th:href="@{{/{pluralTableName}}}" class="btn btn-secondary">Voltar</a>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
+
 </html>'''
 
 def generateIndex(world):
