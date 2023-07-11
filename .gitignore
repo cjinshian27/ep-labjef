@@ -1,3 +1,4 @@
 main.*
 arara*
 !*.tex
+*.tar.gz

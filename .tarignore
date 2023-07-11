@@ -1,0 +1,15 @@
+.gitignore
+.git
+*.sh
+*.tar.gz
+*.zip
+
+*.log
+*.aux
+
+HELP.md
+build
+bin
+.gradle
+lazy.py
+LICENSE
