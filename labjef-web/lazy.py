@@ -360,7 +360,7 @@ def generateListTemplate(table):
     <div class="container px-5 pt-5">
         <div class="row mb-2">
             <div class="col">
-                <a class="btn btn-primary" href="#"  th:href="@{{/pessoa}}" role="button">Cadastrar Novo</a>        
+                <a class="btn btn-primary" href="#" th:href="@{{/{tableName}}}" role="button">Cadastrar Novo</a>
             </div>
         </div>
         <div class="row gx-5 align-items-center">
