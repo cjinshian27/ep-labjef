@@ -37,7 +37,7 @@ $ ./gradlew clean
 
 # Referências
 
-[Código base](https://data.ime.usp.br/mac0350-2023/demo.zip) fornecido na
+* [Código base](https://data.ime.usp.br/mac0350-2023/demo.zip) fornecido na
 aula e nos slides de 
 
 - Pedro Losco Takecian
@@ -46,3 +46,9 @@ aula e nos slides de
 ```shell
 $ wget https://data.ime.usp.br/mac0350-2023/demo.zip
 ```
+
+* [Guia Spring](https://spring.io/guides/gs/serving-web-content/) para fazer a
+  Home page
+
+* [Bootstrap](https://getbootstrap.com/docs/5.0/components/list-group/) CSS
+  para estilizar a Home page

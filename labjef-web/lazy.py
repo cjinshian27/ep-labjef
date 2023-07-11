@@ -353,7 +353,7 @@ def generateListTemplate(table):
 <body>
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
         <div class="container px-5">
-            <a class="navbar-brand fw-bold" href="#page-top">MAC0350 - {table["plural_title"]}</a>
+            <a class="navbar-brand fw-bold" href="/">MAC0350 - {table["plural_title"]}</a>
         </div>
     </nav>
 
@@ -421,7 +421,7 @@ def generateFormTemplate(table):
 <body>
     <nav class="navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
         <div class="container px-5">
-            <a class="navbar-brand fw-bold" href="#page-top">MAC0350 - Cadastro de {table["title"]}</a>            
+            <a class="navbar-brand fw-bold" href="/{pluralTableName}">MAC0350 - Cadastro de {table["title"]}</a>
         </div>
     </nav>
     <div class="container px-5 pt-5">
@@ -439,6 +439,44 @@ def generateFormTemplate(table):
 </body>
 </html>'''
 
+def generateIndex(world):
+    buttons = ""
+
+    for key in world:
+        table = world[key]
+
+        pluralTableName = to_lower_camel_case(table["plural_name"])
+
+        buttons = f'''{buttons}
+          <a href="/{pluralTableName}" class="list-group-item list-group-item-action">Lista de {table["plural_title"]}</a>'''
+
+    return f'''<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Home page</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light shadow-sm" id="mainNav">
+    <div class="container px-5">
+      <a class="navbar-brand fw-bold" href="#page-top">MAC0350 - Home page</a>
+    </div>
+  </nav>
+  <div class="container px-5 pt-5">
+    <div class="row gx-5 align-items-center">
+      <div class="col">
+        <div class="list-group">{buttons}
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>'''
 
 for table in world:
     TableName = to_upper_camel_case(world[table]["name"]);
@@ -466,3 +504,9 @@ for table in world:
 
     with open(f"{pathName}/{pluralTableName}.html", 'w') as f:
         print(generateListTemplate(world[table]), file=f)
+
+pathName = f"src/main/resources/static"
+Path(pathName).mkdir(parents=True, exist_ok=True)
+
+with open(f"{pathName}/index.html", 'w') as f:
+    print(generateIndex(world), file=f)
