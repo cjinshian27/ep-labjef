@@ -13,3 +13,4 @@ bin
 .gradle
 lazy.py
 LICENSE
+.tarignore
