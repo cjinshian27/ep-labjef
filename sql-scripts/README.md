@@ -62,7 +62,7 @@ Após rodar o comando acima, podemos começar a rodar os scripts sql.
 > **Note**
 > Substitua path_to nas seções seguintes com o caminho relativo dos arquivos
 > correspondentes. Por exemplo: `\i create.sql` se tiver acessando o banco de
-> dados a partir da pasta src/ (onde os scripts estão localizados).
+> dados a partir da pasta sql-scripts/ (onde os scripts estão localizados).
 
 #### Criar tabelas.
 
