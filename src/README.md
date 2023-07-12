@@ -53,30 +53,45 @@ Acessar banco de dados "teste" como usuário "testeusr"
 
 ```shell
 $ psql -U testeusr teste
+
+teste=#
 ```
 
-> **Note**
-> Substitua path_to com o caminho dos arquivos correspondentes.
+Após rodar o comando acima, podemos começar a rodar os scripts sql.
 
-Criar tabelas.
+> **Note**
+> Substitua path_to nas seções seguintes com o caminho relativo dos arquivos
+> correspondentes. Por exemplo: `\i create.sql` se tiver acessando o banco de
+> dados a partir da pasta src/ (onde os scripts estão localizados).
+
+#### Criar tabelas.
 
 ```shell
 teste=# \i path_to/create.sql
 ```
 
-Criar funções para as consultas.
+#### Criar funções para as consultas.
 
 ```shell
 teste=# \i path_to/query.sql
 ```
 
-Inserir instâncias nas tabelas.
+#### Inserir instâncias nas tabelas.
 
 ```shell
 teste=# \i path_to/insert.sql
 ```
 
-Remover tabelas.
+#### Realizar as consultas.
+
+```shell
+teste=# SELECT * FROM servicos_por_pessoa();
+teste=# SELECT * FROM servicos_utilizados_por_perfil();
+teste=# SELECT * FROM cinco_disciplinas_mais_oferecidas();
+teste=# SELECT * FROM cinco_docentes_que_mais_ministraram();
+```
+
+#### Remover tabelas e funções.
 
 ```shell
 teste=# \i path_to/drop.sql
@@ -103,3 +118,10 @@ removido
 ```shell
 postgres=# \du;
 ```
+
+# Referências
+
+Instalação e configuração do postgresql baseada na aula e nos slides de
+
+- Pedro Losco Takecian
+- Leonardo Tadashi Kamaura
