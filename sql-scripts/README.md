@@ -93,11 +93,19 @@ teste=# SELECT * FROM cinco_docentes_que_mais_ministraram();
 
 #### Remover tabelas e funções.
 
+> **Note**
+> Não delete as tabelas antes de testar o aplicativo web, deixe esta etapa para
+> o final!
+
 ```shell
 teste=# \i path_to/drop.sql
 ```
 
 ## Desfazer ambiente
+
+> **Note**
+> Não delete o database e o usuário antes de testar o aplicativo web, deixe
+> esta etapa para o final!
 
 ```shell
 $ sudo -u postgres psql
